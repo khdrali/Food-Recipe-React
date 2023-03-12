@@ -1,0 +1,44 @@
+html,body{
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.background-login{
+    background-image: url('../image/login.png');
+    background-size: cover;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-forgot{
+    height: 100vh; 
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-forgot h1{
+    color: #EFC81A;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+    text-align: center;
+}
+
+.form-forgot p{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    text-align: center;
+    color: #8692A6;
+}
+
+.form-forgot .form-width{
+    width: 400px;
+}

@@ -1,0 +1,76 @@
+html,body{
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.background-login{
+    background-image: url('../image/login.png');
+    background-size: cover;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay{
+    background-color: yellow;
+    /* opacity: 0.5; */
+    width: 102%;
+}
+
+.form-login{
+    height: 100vh; 
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-login h1{
+    color: #EFC81A;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+    text-align: center;
+}
+
+.form-login p{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    text-align: center;
+    color: #8692A6;
+}
+
+.form-login .form-width{
+    width: 400px;
+}
+
+.form-login .forgot{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #999999;
+    text-decoration: none;
+    display: block;
+    text-align: right;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.form-login .acc{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 17px;
+    color: #999999;
+}
+
+.form-login .sign-up{
+    text-decoration: none;
+    color:#EFC81A;
+}
