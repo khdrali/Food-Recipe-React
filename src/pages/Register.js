@@ -1,18 +1,26 @@
 import React from "react";
 import "../styles/register.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 // import env from "../env.json";
 
 function Register() {
+  const router = useNavigate();
   const [userName, setUserName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [phone, setPhone] = React.useState("");
   const [password, setPassword] = React.useState("");
   // const [newPassword, setNewPassword] = React.useState("");
   const [errMsg, setErrMsg] = React.useState("");
+  const [sucMsg, setSucMsg] = React.useState("");
+  const [isSucess, setIsSucess] = React.useState(false);
   const [Loading, setLoading] = React.useState(false);
   const [isError, setIsError] = React.useState(false);
+
+  const success = () => {
+    setIsSucess(true);
+    setSucMsg("berhasil");
+  };
 
   return (
     <div>
@@ -34,6 +42,11 @@ function Register() {
             {isError ? (
               <div class="alert alert-danger" role="alert">
                 {errMsg}
+              </div>
+            ) : null}
+            {isSucess ? (
+              <div class="alert alert-success" role="alert">
+                {sucMsg}
               </div>
             ) : null}
             <div class="mb-3 form-width">
@@ -84,18 +97,6 @@ function Register() {
                 onChange={(event) => setPassword(event.target.value)}
               />
             </div>
-            {/* <div class="mb-3 form-width">
-              <label for="password-input" class="form-label form-control-lg">
-                New Password
-              </label>
-              <input
-                type="password"
-                class="form-control"
-                id="password-input"
-                placeholder="New Password"
-                onChange={(event) => setNewPassword(event.target.value)}
-              />
-            </div> */}
             <div class="form-check check">
               <input
                 class="form-check-input"
@@ -114,37 +115,41 @@ function Register() {
                 disabled={Loading}
                 onClick={() => {
                   setLoading(true);
-                  const config = {
-                    headers: {
-                      "Content-Type": "multipart/form-data",
-                    },
-                  };
                   axios
-                    .post(
-                      `${process.env.REACT_APP_URL_BACKEND}/users/add`,
-                      {
-                        userName,
-                        email,
-                        phone,
-                        password,
-                      },
-                      config
-                    )
+                    .post(`http://localhost:3005/users/add`, {
+                      username: userName,
+                      email,
+                      phone,
+                      password,
+                    })
                     .then((res) => {
                       console.log(res);
-                      // setLoading(false);
+                      setIsSucess(true);
+                      setIsError(false);
+                      setSucMsg("Data Berhasil Ditambah");
+                      setLoading(false);
+                      setTimeout(() => {
+                        router("/login");
+                      }, 2000);
                     })
                     .catch((err) => {
-                      console.log("error doong");
-                      // setIsError(true);
-                      // setErrMsg(err.response?.data?.message);
+                      console.log(err);
+                      setIsError(true);
+                      setIsSucess(false);
+                      setErrMsg(
+                        err?.response?.data?.message?.username?.message ??
+                          err?.response?.data?.message?.email?.message ??
+                          err?.response?.data?.message?.phone?.message ??
+                          err?.response?.data?.message?.password?.message ??
+                          "Something wrong with our server"
+                      );
                       setLoading(false);
                     });
                 }}
               >
-                <Link to="/Login">
-                  {Loading ? "Loading..." : "Register Account"}
-                </Link>
+                {/* <Link to="/Login"> */}
+                {Loading ? "Loading..." : "Register Account"}
+                {/* </Link> */}
               </button>
             </div>
             <p class="accc">
