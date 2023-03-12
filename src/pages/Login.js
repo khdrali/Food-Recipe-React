@@ -112,7 +112,9 @@ function Login() {
                         "token",
                         res?.data?.data?.token ?? ""
                       );
-                      setSucMsg("Login Berhasil");
+                      setTimeout(() => {
+                        setSucMsg("Login Berhasil");
+                      }, 2000);
                       navigate("/");
 
                       localStorage.setItem("isLogin", "true");
