@@ -17,11 +17,6 @@ function Register() {
   const [Loading, setLoading] = React.useState(false);
   const [isError, setIsError] = React.useState(false);
 
-  const success = () => {
-    setIsSucess(true);
-    setSucMsg("berhasil");
-  };
-
   return (
     <div>
       <div class="row">
