@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/register.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-// import env from "../env.json";
+// import env from "react-dotenv";
 
 function Register() {
   const router = useNavigate();
@@ -111,7 +111,7 @@ function Register() {
                 onClick={() => {
                   setLoading(true);
                   axios
-                    .post(`http://localhost:3005/users/add`, {
+                    .post(`${process.env.REACT_APP_URL_BACKEND}/users/add`, {
                       username: userName,
                       email,
                       phone,

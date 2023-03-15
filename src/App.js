@@ -1,37 +1,41 @@
-import { createBrowserRouter,RouterProvider } from 'react-router-dom'
-import Home from './pages/Home'
-import Login from './pages/Login'
-import DetailRecipe from './pages/detail-recipe'
-import Register from './pages/Register'
-import Maintenance from './pages/Maintenance'
-import Profile from './pages/Profile'
-import AddRecipe from './pages/add-recipe'
-import Forgot from './pages/forgot'
-import Otp from './pages/otp'
-import Success from './pages/success'
-import ResetPassword from './pages/reset-password'
-import Logout from './pages/Logout'
-import React from 'react'
-
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { PersistGate } from "redux-persist/integration/react";
+import store from "./store/index";
+import { Provider } from "react-redux";
+import { persistStore } from "redux-persist";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import DetailRecipe from "./pages/detail-recipe";
+import Register from "./pages/Register";
+import Maintenance from "./pages/Maintenance";
+import Profile from "./pages/Profile";
+import AddRecipe from "./pages/add-recipe";
+import Forgot from "./pages/forgot";
+import Otp from "./pages/otp";
+import Success from "./pages/success";
+import ResetPassword from "./pages/reset-password";
+import Logout from "./pages/Logout";
+import React from "react";
 
 function App() {
-  const maintenance=["profile"]
-  const [isPageMaintenance, setIsPageMaintenance]= React.useState(
-    process.env.REACT_APP_IS_MAINTENANCE==="true" &&
-  maintenance.find((res)=>res===document.location.pathname)
-  )
+  let persistor = persistStore(store);
+  const maintenance = ["profile"];
+  const [isPageMaintenance, setIsPageMaintenance] = React.useState(
+    process.env.REACT_APP_IS_MAINTENANCE === "true" &&
+      maintenance.find((res) => res === document.location.pathname)
+  );
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Home  />
+      element: <Home />,
     },
     {
       path: "login",
-      element: <Login  />,
+      element: <Login />,
     },
     {
       path: "detail-recipe/:id",
-      element: <DetailRecipe/>,
+      element: <DetailRecipe />,
     },
     {
       path: "register",
@@ -67,14 +71,23 @@ function App() {
     },
   ]);
 
-  
-  if(isPageMaintenance){
-    return <Maintenance maintenanceList={maintenance} 
-    turnOnMaintenance={()=>setIsPageMaintenance(true)}
-    turnOffMaintenance={()=>setIsPageMaintenance(false)} />
-  }else{
-    return  <RouterProvider router={router} />
+  if (isPageMaintenance) {
+    return (
+      <Maintenance
+        maintenanceList={maintenance}
+        turnOnMaintenance={() => setIsPageMaintenance(true)}
+        turnOffMaintenance={() => setIsPageMaintenance(false)}
+      />
+    );
+  } else {
+    return (
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <RouterProvider router={router} />
+        </PersistGate>
+      </Provider>
+    );
   }
-};
+}
 
 export default App;

@@ -47,7 +47,7 @@ function Home() {
   React.useEffect(() => {
     setIsLoading(false);
     axios
-      .get("http://localhost:3005/recipes/data/sort")
+      .get(`${process.env.REACT_APP_URL_BACKEND}/recipes/data/sort`)
       .then((res) => {
         setMenu(res?.data?.data);
       })
@@ -154,11 +154,7 @@ function Home() {
           <div class="row">
             {menu.map((item) => (
               <div class="col-lg-4 mb-5">
-                <Card
-                  image={item?.photo}
-                  name={item?.title}
-                  url={item?.title?.toLocaleLowerCase()?.split(" ").join("-")}
-                />
+                <Card image={item?.photo} name={item?.title} id={item?.id} />
               </div>
             ))}
           </div>
