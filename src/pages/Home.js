@@ -161,9 +161,9 @@ function Home() {
         </div>
       </section>
       {/* <!-- End Popular Recipe --> */}
-      <div className="row d-flex justify-content-center">
+      <div className="row">
         <nav aria-label="Page navigation example">
-          <ul class="pagination">
+          <ul class="pagination justify-content-center">
             <li class="page-item">
               <a
                 class="page-link"
