@@ -32,7 +32,7 @@ function AddRecipe() {
         {
           photo,
           title,
-          ingredient,
+          ingredients:ingredient,
           video,
         },
         config
