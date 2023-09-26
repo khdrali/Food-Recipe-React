@@ -4,6 +4,7 @@ import Footer from "../components/organism/Footer";
 import "../styles/add-recipe.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import MediaQuery from "react-responsive";
 
 function AddRecipe() {
   const [ingredient, setIngredient] = React.useState("");
@@ -57,8 +58,6 @@ function AddRecipe() {
         setLoading(false);
       });
   };
-  console.log(isError);
-  console.log(errMsg);
   React.useEffect(() => {
     const isLogin = localStorage.getItem("isLogin");
     if (!isLogin && !token) {

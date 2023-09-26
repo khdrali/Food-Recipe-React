@@ -58,15 +58,6 @@
     right: 0;
 }
 
-/* mobile responsive */
-
-@media screen and (max-width:576px) {
-    #header {
-        display:block;
-        align-items:unset;
-        margin-bottom: -100px;
-    }
-}
 
 /*CSS New Recipe*/
 
@@ -189,4 +180,122 @@ footer .footer-link p{
     font-size: 18px;
     line-height: 24px;
     color: #707070;
+}
+
+/* CSS Responsive */
+
+#header-mobile{
+    height: 100vh;
+    display:flex;
+    align-items: center;
+}
+
+#header-mobile .main-mobile{
+    height: 100vh;
+    width: 400px;
+    background-color: #EFC81A;
+}
+
+#header-mobile .mobile-discover{
+    margin-top: 120px;
+}
+
+#header-mobile h1{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 50px;
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    color: #2E266F;
+    margin-bottom: 50px;
+}
+
+#header-mobile .background-mobile{
+    position: absolute;
+    z-index: 5;
+}
+#header-mobile .background-1-mobile{
+    margin-top: -80px;
+}
+
+#header-mobile .background-2-mobile{
+    position: absolute;
+    margin-left: -230px;
+}
+
+/* CSS New-Recipe */
+
+#new-recipe-mobile{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+#new-recipe-mobile .title{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 38px;
+    line-height: 50px;
+    color: #3F3A3A;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 100px;
+    border-left: 10px solid #EFC81A;
+    padding-left: 10px;
+}
+
+#new-recipe-mobile .main-image-mobile{
+    object-fit:contain;
+    border-radius: 10px;
+    z-index: 1;
+    margin-left: -50px;
+}
+
+#new-recipe-mobile .main-new-recipe{
+    height: 70vh;
+    width: 400px;
+    background-color: #EFC81A;   
+}
+
+#new-recipe-mobile .btn{
+    width: 100px;
+margin-left:35%;
+margin-bottom: 40px;
+}
+
+#new-recipe-mobile h2{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 38px;
+    line-height: 40px;
+    display: flex;
+    align-items: center;
+    text-transform: capitalize; 
+    margin-bottom: 15px;
+}
+
+#new-recipe-mobile p{
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 25px;
+}
+
+/* Popular Recipe */
+
+#popular-recipe-mobile .title{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 38px;
+    line-height: 50px;
+    color: #3F3A3A;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 100px;
+    border-left: 10px solid #EFC81A;
+    padding-left: 10px;
+}
+
+#popular-recipe-mobile{
+    margin-top: 100px;
 }
