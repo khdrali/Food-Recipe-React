@@ -151,16 +151,6 @@ function Login() {
       </MediaQuery>
       <MediaQuery maxWidth={767}>
       <div className="row">
-        {/* <!--Left--> */}
-        {/* <div className="col-6 background-login">
-          <img
-            src="image/logo mama recipe.png"
-            width="140x"
-            height="150px"
-            alt="Login"
-          />
-        </div> */}
-        {/* <!--Right--> */}
         <div className=" form-login-mobile">
           <div>
             <h1>Welcome</h1>

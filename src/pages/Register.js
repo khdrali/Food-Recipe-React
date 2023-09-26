@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/register.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import MediaQuery from "react-responsive";
 // import env from "react-dotenv";
 
 function Register() {
@@ -19,6 +20,7 @@ function Register() {
 
   return (
     <div>
+      <MediaQuery minWidth={992}>
       <div class="row">
         {/* <!--Left--> */}
         <div class="col-6 background-login">
@@ -156,6 +158,136 @@ function Register() {
           </div>
         </div>
       </div>
+      </MediaQuery>
+      <MediaQuery maxWidth={767}>
+      <div class="row">
+        <div class="form-sign-up-mobile">
+          <div>
+            <h1>Let's Get Started !</h1>
+            <p>Create new account to access all features</p>
+            {isError ? (
+              <div class="alert alert-danger" role="alert">
+                {errMsg}
+              </div>
+            ) : null}
+            {isSucess ? (
+              <div class="alert alert-success" role="alert">
+                {sucMsg}
+              </div>
+            ) : null}
+            <div class="mb-3 form-width">
+              <label for="name-input" class="form-label form-control-lg">
+                Name
+              </label>
+              <input
+                type="name"
+                class="form-control"
+                id="name-input"
+                placeholder="Name"
+                onChange={(event) => setUserName(event.target.value)}
+              />
+            </div>
+            <div class="mb-3 form-width">
+              <label for="email-input" class="form-label form-control-lg">
+                Email address*
+              </label>
+              <input
+                type="email"
+                class="form-control"
+                id="email-input"
+                placeholder="Enter Email Address"
+                onChange={(event) => setEmail(event.target.value)}
+              />
+            </div>
+            <div class="mb-3 form-width">
+              <label for="phone-input" class="form-label form-control-lg">
+                Phone Number
+              </label>
+              <input
+                type="number"
+                class="form-control"
+                id="phone-input"
+                placeholder="08xxxxxxxxx"
+                onChange={(event) => setPhone(event.target.value)}
+              />
+            </div>
+            <div class="mb-3 form-width">
+              <label for="password-input" class="form-label form-control-lg">
+                Create New Password
+              </label>
+              <input
+                type="password"
+                class="form-control"
+                id="password-input"
+                placeholder="Create New Password"
+                onChange={(event) => setPassword(event.target.value)}
+              />
+            </div>
+            <div class="form-check check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="agreement"
+              />
+              <label class="form-check-label" for="agreement">
+                I agree to terms & condition
+              </label>
+            </div>
+            <div class="d-grid gap-2 but">
+              <button
+                type="button"
+                class="btn btn-warning"
+                disabled={Loading}
+                onClick={() => {
+                  setLoading(true);
+                  axios
+                    .post(`${process.env.REACT_APP_URL_BACKEND}/users/add`, {
+                      username: userName,
+                      email,
+                      phone,
+                      password,
+                    })
+                    .then((res) => {
+                      console.log(res);
+                      setIsSucess(true);
+                      setIsError(false);
+                      setSucMsg("Data Berhasil Ditambah");
+                      setLoading(false);
+                      setTimeout(() => {
+                        router("/login");
+                      }, 2000);
+                    })
+                    .catch((err) => {
+                      console.log(err);
+                      setIsError(true);
+                      setIsSucess(false);
+                      setErrMsg(
+                        err?.response?.data?.message?.username?.message ??
+                          err?.response?.data?.message?.email?.message ??
+                          err?.response?.data?.message?.phone?.message ??
+                          err?.response?.data?.message?.password?.message ??
+                          "Something wrong with our server"
+                      );
+                      setLoading(false);
+                    });
+                }}
+              >
+                {/* <Link to="/Login"> */}
+                {Loading ? "Loading..." : "Register Account"}
+                {/* </Link> */}
+              </button>
+            </div>
+            <p class="accc">
+              Already have account?
+              <Link class="sign-in" to="/Login">
+                Log in Here
+              </Link>
+            </p>
+          </div>
+        </div>
+      </div>
+      </MediaQuery>
     </div>
   );
 }

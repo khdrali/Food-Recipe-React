@@ -59,3 +59,54 @@ html,body{
     text-decoration: none;
     color:#EFC81A;
 }
+
+/* CSS Mobile */
+
+.form-sign-up-mobile{
+    margin-top: 40px!important;
+    height: 100%; 
+    background: #FFF5EC;;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-sign-up-mobile h1{
+    color: #EFC81A;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+    text-align: center;
+}
+
+.form-sign-up-mobile p{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    text-align: center;
+    color: #8692A6;
+}
+
+.form-sign-up-mobile .form-width{
+    width: 300px;
+}
+
+.form-sign-up-mobile .but{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.form-sign-up-mobile .accc{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 17px;
+    color: #999999;
+}
+
+.form-sign-up-mobile .sign-in{
+    text-decoration: none;
+    color:#EFC81A;
+}
